@@ -386,12 +386,24 @@ class ConfigInput:
                         try:
                             read_value = json.loads(val)
                         except json.JSONDecodeError as e:
-                            msgs.append(
-                                "configuration value for '%s' is not valid JSON: %s"
-                                % (name, e)
-                            )
-                            continue
-                        # TODO: Support YAML
+                            try:
+                                read_value = yaml.safe_load(val)
+
+                            except YAMLError as e:
+                                msgs.append(
+                                    sgs.append(
+                                        "configuration value for '%s' is not valid JSON or YAML: %s"
+                                        % (name, e)
+                                        
+                                )
+                                continue
+                            if not isinstance(read_value, dict):
+                                msgs.append(
+                                    "configuration value for '%s' is valid YAML but must be a mapping (got %s)"
+                                    % (name, type(read_value).__name__)
+                                )
+                                continue
+                                                             
                 flow_cls._flow_state.self_data[FlowStateItems.CONFIGS][name] = (
                     read_value,
                     is_plain,
