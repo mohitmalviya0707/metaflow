@@ -4,6 +4,9 @@ import os
 from collections.abc import Mapping
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
+
+from metaflow._vendor import yaml
+from metaflow._vendor.yaml import YAMLError
 from metaflow._vendor import click
 from metaflow.debug import debug
 
