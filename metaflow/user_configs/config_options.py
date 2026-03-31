@@ -391,10 +391,9 @@ class ConfigInput:
 
                             except YAMLError as e:
                                 msgs.append(
-                                    sgs.append(
-                                        "configuration value for '%s' is not valid JSON or YAML: %s"
-                                        % (name, e)
-                                        
+                                    "configuration value for '%s' is not valid JSON or YAML: %s"
+                                     % (name, e)
+                                    
                                 )
                                 continue
                             if not isinstance(read_value, dict):
