@@ -4,7 +4,7 @@ from metaflow._vendor import click
 
 from ..cli import echo_always, echo_dev_null
 from ..datastore import TaskDataStoreSet
-from ..exception import CommandException
+from ..exception import CommandException 
 
 
 @click.command(
